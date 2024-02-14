@@ -1,0 +1,12 @@
+.centered-title {
+    text-align: center;
+}
+
+.sidebar .sidebar-content {
+    background-color: purple;
+    width: 200px;
+}
+
+.main-content {
+    background-color: #e6e6fa; /* Light shade of purple for the background color of the main content */
+}
