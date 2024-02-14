@@ -5,24 +5,17 @@ def main():
             css = f.read()
     st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
     
-    st.title("CircadianSync")
-    st.markdown('<h1 class="centered-title">Centered Title</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="centered-title">Circadian Sync</h1>', unsafe_allow_html=True)
 
     # Add content to the main area of the app
-    st.markdown('<div class="main-content">Main content goes here</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-content">CircadianSync is a Machine Learning model that intakes the gene expression levels of patients in order to analyze and predict whether they have pancreatic adenocarcinoma, circadian dysfunction, neither, or both.</div>', unsafe_allow_html=True)
 
     # Add widgets to the sidebar
     st.sidebar.title("CircSync Predictor")
-    st.sidebar.markdown('<div class="sidebar-content">Sidebar content goes here</div>', unsafe_allow_html=True)
-
-    # Add content to the main area of the app
-    st.write("CircadianSync is a Machine Learning model that intakes the gene expression levels of patients in order to analyze and predict whether they have pancreatic adenocarcinoma, circadian dysfunction, neither, or both.")
+    st.sidebar.markdown('<div class="sidebar-content">To use CircSync to predict a patient's diagnosis, upload a CSV/Excel file with their gene expression levels as numerical values in it. Make sure there are two columns: one for gene names labeled GeneID and one for the values labeled ExpressionLevels</div>', unsafe_allow_html=True)
 
     # Add widgets to the sidebar
-    st.sidebar.title("CircSync Predictor")
     # st.sidebar.image("https://raw.githubusercontent.com/your_username/your_repository/main/path/to/your/image.png", use_column_width=True)
-
-    st.sidebar.write("To use CircSync to predict a patient's diagnosis, upload a CSV/Excel file with their gene expression levels as numerical values in it. Make sure there are two columns: one for gene names labeled GeneID and one for the values labeled ExpressionLevels")
 
     # Add a file uploader widget to the sidebar
     uploaded_file = st.sidebar.file_uploader("Upload a file", type=["csv"])
