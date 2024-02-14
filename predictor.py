@@ -2,10 +2,18 @@ import streamlit as st
 
 def main():
     with open("circsync_css.css", "r") as f:
-        css = f.read()
+            css = f.read()
     st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
     
     st.title("CircadianSync")
+    st.markdown('<h1 class="centered-title">Centered Title</h1>', unsafe_allow_html=True)
+
+    # Add content to the main area of the app
+    st.markdown('<div class="main-content">Main content goes here</div>', unsafe_allow_html=True)
+
+    # Add widgets to the sidebar
+    st.sidebar.title("CircSync Predictor")
+    st.sidebar.markdown('<div class="sidebar-content">Sidebar content goes here</div>', unsafe_allow_html=True)
 
     # Add content to the main area of the app
     st.write("CircadianSync is a Machine Learning model that intakes the gene expression levels of patients in order to analyze and predict whether they have pancreatic adenocarcinoma, circadian dysfunction, neither, or both.")
