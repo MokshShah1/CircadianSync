@@ -4,7 +4,6 @@ import os
 import pickle
 
 # Set Streamlit server option to run in headless mode
-st.set_option('server.headless', True)
 
 def main():
     with open("circsync_css.css", "r") as f:
