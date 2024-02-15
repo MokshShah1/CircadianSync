@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import os
-from sklearn.externals import joblib
+import joblib
 
 def main():
     with open("circsync_css.css", "r") as f:
