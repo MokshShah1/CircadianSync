@@ -36,7 +36,7 @@ def main():
 
         # Load the test data from a file
         def load_test_data(file_path):
-            df = pd.read_excel(file_path, header=None)  # assuming there's no header
+            df = pd.read_csv(file_path)  # assuming it's a CSV file
             return df
 
         # Preprocess the test data
@@ -66,7 +66,7 @@ def main():
         file_path = 'modified_file.csv'
         
         # Check if the file exists
-        if os.path.exists(file_path) and file_path.endswith('.xlsx'):
+        if os.path.exists(file_path) and file_path.endswith('.csv'):
             # Load and preprocess the test data
             test_data = load_test_data(file_path)
             test_data = preprocess_test_data(test_data)
@@ -81,7 +81,7 @@ def main():
             predictions = model.predict(test_ratios)
 
             # Print the predicted scenario for the file
-            st.write(f"File: {file_path}, Predicted Scenario: {predicted_scenario}")
+            st.write(f"File: {file_path}, Predicted Scenario: {predictions}")
 
     # Dropdown menu in the sidebar
     selected_option = st.sidebar.selectbox("Select a model", ["Random Forest", "Gradient Boosting Classifier", "K Neighbors", "Decision Tree Classifier"])
