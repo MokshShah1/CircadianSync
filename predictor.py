@@ -3,6 +3,12 @@ import pandas as pd
 import os
 import pickle
 
+# Verify if openpyxl is installed
+try:
+    import openpyxl
+except ImportError:
+    st.error("openpyxl is not installed. Please install it using pip.")
+
 def main():
     with open("circsync_css.css", "r") as f:
         css = f.read()
