@@ -3,9 +3,6 @@ import pandas as pd
 import os
 import pickle
 
-import openpyxl
-
-
 def main():
     with open("circsync_css.css", "r") as f:
         css = f.read()
@@ -18,17 +15,14 @@ def main():
 
     # Add widgets to the sidebar
     st.sidebar.title("CircSync Predictor")
-    st.sidebar.markdown('<div class="sidebar-content">To use CircSync to predict a patient\'s diagnosis, upload a CSV/Excel file with their gene expression levels as numerical values in it. Make sure there are two columns: one for gene names labeled GeneID and one for the values labeled ExpressionLevels</div>', unsafe_allow_html=True)
+    st.sidebar.markdown('<div class="sidebar-content">To use CircSync to predict a patient\'s diagnosis, upload a CSV file with their gene expression levels as numerical values in it. Make sure there are two columns: one for gene names labeled GeneID and one for the values labeled ExpressionLevels</div>', unsafe_allow_html=True)
 
     # Upload the CSV file
-    uploaded_file = st.sidebar.file_uploader("Upload a file", type=["csv", "xlsx"])
+    uploaded_file = st.sidebar.file_uploader("Upload a file", type=["csv"])
 
     if uploaded_file is not None:
         # Read the file into a pandas DataFrame
-        if uploaded_file.name.endswith('csv'):
-            df = pd.read_csv(uploaded_file)
-        elif uploaded_file.name.endswith('xlsx'):
-            df = pd.read_excel(uploaded_file)
+        df = pd.read_csv(uploaded_file)
 
         # Remove the first column
         df.drop(df.columns[0], axis=1, inplace=True)
@@ -82,7 +76,7 @@ def main():
 
             # Load the model from the file
             # Specify the path to the model file
-            model_file_path = 'path/to/random_forest_model_ISEF (2).pkl'  # Replace 'path/to/' with the actual path to your model file
+            model_file_path = 'random_forest_model_ISEF (2).pkl'  # Replace 'path/to/' with the actual path to your model file
 
             # Check if the file exists
             if os.path.exists(model_file_path):
