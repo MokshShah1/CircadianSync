@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 import pickle
+import sklearn
 
 def main():
     with open("circsync_css.css", "r") as f:
