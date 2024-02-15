@@ -90,4 +90,4 @@ def main():
     st.write(f"You selected: {selected_option}")
 
 if __name__ == "__main__":
-    main()
+    main() 
