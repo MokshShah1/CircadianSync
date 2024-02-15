@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
 import os
-import joblib
-import pickle
+=import pickle
 
 def main():
     with open("circsync_css.css", "r") as f:
