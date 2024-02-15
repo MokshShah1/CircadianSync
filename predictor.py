@@ -1,10 +1,11 @@
 import streamlit as st
 import pandas as pd
 import os
-import joblib
+import pickle
 
 # Set Streamlit server option to run in headless mode
 st.set_option('server.headless', True)
+
 def main():
     with open("circsync_css.css", "r") as f:
         css = f.read()
@@ -76,8 +77,9 @@ def main():
             # Calculate gene expression ratios for the test data
             test_ratios = calculate_ratios(test_data)
 
-            # Load the model from the file
-            model = joblib.load('random_forest_model_ISEF (2).pkl')
+            # Load the model from the file using pickle
+            with open('model.pkl', 'rb') as model_file:
+                model = pickle.load(model_file)
 
             # Now you can use the loaded model to make predictions
             predictions = model.predict(test_ratios)
@@ -92,4 +94,4 @@ def main():
     st.write(f"You selected: {selected_option}")
 
 if __name__ == "__main__":
-    main() 
+    main()
