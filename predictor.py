@@ -1,9 +1,8 @@
 import streamlit as st
 import pandas as pd
 import os
+import joblib
 import pickle
-
-# Set Streamlit server option to run in headless mode
 
 def main():
     with open("circsync_css.css", "r") as f:
@@ -20,12 +19,15 @@ def main():
     st.sidebar.markdown('<div class="sidebar-content">To use CircSync to predict a patient\'s diagnosis, upload a CSV/Excel file with their gene expression levels as numerical values in it. Make sure there are two columns: one for gene names labeled GeneID and one for the values labeled ExpressionLevels</div>', unsafe_allow_html=True)
 
     # Upload the CSV file
-    uploaded_file = st.sidebar.file_uploader("Upload a file", type=["csv"])
+    uploaded_file = st.sidebar.file_uploader("Upload a file", type=["csv", "xlsx"])
 
     if uploaded_file is not None:
-        # Read the CSV file into a pandas DataFrame
-        df = pd.read_csv(uploaded_file)
-    
+        # Read the file into a pandas DataFrame
+        if uploaded_file.name.endswith('csv'):
+            df = pd.read_csv(uploaded_file)
+        elif uploaded_file.name.endswith('xlsx'):
+            df = pd.read_excel(uploaded_file)
+
         # Remove the first column
         df.drop(df.columns[0], axis=1, inplace=True)
     
@@ -76,8 +78,8 @@ def main():
             # Calculate gene expression ratios for the test data
             test_ratios = calculate_ratios(test_data)
 
-            # Load the model from the file using pickle
-            with open('model.pkl', 'rb') as model_file:
+            # Load the model from the file
+            with open('random_forest_model_ISEF (2).pkl', 'rb') as model_file:
                 model = pickle.load(model_file)
 
             # Now you can use the loaded model to make predictions
