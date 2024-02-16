@@ -8,6 +8,8 @@ body {
 
 .container {
     display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange items vertically */
+    gap: 20px; /* Add gap between child elements */
 }
 
 .main-content {
@@ -33,7 +35,7 @@ body {
 .predicted-scenario {
     font-weight: bold;
     color: #8A2BE2; /* Set text color to purple */
-    font-size: 16px; /* Increase the font size */
+    font-size: 24px; /* Increase the font size */
     margin-bottom: 10px; /* Add margin to the bottom */
 }
 
