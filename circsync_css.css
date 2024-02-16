@@ -32,6 +32,8 @@ body {
 .predicted-scenario {
     font-weight: bold;
     color: purple; /* Set text color to purple */
+    font-size: 16px; /* Increase the font size */
+    margin-bottom: 10px; /* Add margin to the bottom */
 }
 
 .prediction-probabilities {
