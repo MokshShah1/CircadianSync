@@ -16,8 +16,6 @@ body {
     padding: 20px;
     background-color: #333333; /* Darker background color for main content */
     border-radius: 10px;
-    float: left;
-    width: 70%; /* Adjust the width of the main content */
 }
 
 .sidebar-content {
@@ -25,7 +23,8 @@ body {
     background-color: #333333; /* Darker background color for sidebar content */
     border-radius: 10px;
     float: left;
-    width: 30%; /* Adjust the width of the sidebar */
+    width: 65%; /* Adjust the width of the sidebar */
+    margin-right: 5%; /* Add margin to the right of the sidebar */
 }
 
 .predicted-scenario {
@@ -54,6 +53,7 @@ body {
 
 /* Pie Chart Styling */
 #pie-chart-container {
-    float: right;
+    float: left;
     width: 30%; /* Adjust the width of the pie chart container */
+    margin-top: 20px; /* Add margin to the top of the pie chart container */
 }
