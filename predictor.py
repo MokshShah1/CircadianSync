@@ -2,7 +2,53 @@ import streamlit as st
 import pandas as pd
 import os
 import joblib
-import openpyxl  # Add this line to import openpyxl
+
+def load_and_predict_model(test_ratios, selected_option):
+    model_file_path = None
+    if selected_option == "Random Forest":
+        model_file_path = 'random_forest_model_ISEF (2).pkl'
+    elif selected_option == "Gradient Boosting Classifier":
+        model_file_path = 'GradientBoostingClassifier_ISEF (2).pkl'
+    elif selected_option == "K Neighbors":
+        model_file_path = 'KNeighborsClassifier_ISEF (2).pkl'
+    elif selected_option == "Decision Tree Classifier":
+        model_file_path = 'DecisionTreeClassifier_ISEF (2).pkl'
+
+    if model_file_path is not None:
+        # Check if the model file exists
+        if os.path.exists(model_file_path):
+            # Load the model from the file
+            model = joblib.load(model_file_path)
+
+            # Now you can use the loaded model to make predictions and obtain prediction probabilities
+            predictions = model.predict(test_ratios)
+            prediction_probabilities = model.predict_proba(test_ratios)
+
+            # Mapping dictionary for transforming predicted scenarios
+            prediction_labels = {
+                'pancreatic_circadian': 'Pancreatic Cancer and Disrupted Circadian Rhythm',
+                'no_pancreatic_circadian': 'No Pancreatic Cancer, but Disrupted Circadian Rhythm',
+                'no_pancreatic_no_circadian': 'No Pancreatic Cancer and Regular Circadian Rhythm',
+                'pancreatic_no_circadian': 'Pancreatic Cancer but Regular Circadian Rhythm'
+            }
+
+            # Transform predicted scenarios
+            transformed_predictions = [prediction_labels[prediction] for prediction in predictions]
+
+            # Print the transformed predicted scenario and prediction probabilities for the file
+            st.markdown('<div class="predicted-scenario">Predicted Scenario:</div>', unsafe_allow_html=True)
+            for transformed_prediction in transformed_predictions:
+                st.write(transformed_prediction)
+
+            # Show the prediction probabilities
+            st.markdown('<div class="prediction-probabilities">Prediction Probabilities:</div>', unsafe_allow_html=True)
+            for i, class_name in enumerate(model.classes_):
+                transformed_class_name = prediction_labels[class_name]
+                st.write(f"{transformed_class_name}: {prediction_probabilities[0][i]}")
+        else:
+            st.error(f"Model file '{model_file_path}' not found.")
+    else:
+        st.error("No model file selected.")
 
 def main():
     with open("circsync_css.css", "r") as f:
@@ -70,54 +116,9 @@ def main():
             # Specify the model file based on the selected model
             selected_option = st.sidebar.selectbox("Select a model", ["Random Forest", "Gradient Boosting Classifier", "K Neighbors", "Decision Tree Classifier"])
 
-            model_file_path = None
-            if selected_option == "Random Forest":
-                model_file_path = 'random_forest_model_ISEF (2).pkl'
-            elif selected_option == "Gradient Boosting Classifier":
-                model_file_path = 'GradientBoostingClassifier_ISEF (2).pkl'
-            elif selected_option == "K Neighbors":
-                model_file_path = 'KNeighborsClassifier_ISEF (2).pkl'
-            elif selected_option == "Decision Tree Classifier":
-                model_file_path = 'DecisionTreeClassifier_ISEF (2).pkl'
-
-            if model_file_path is not None:
-                # Check if the model file exists
-                if os.path.exists(model_file_path):
-                    # Load the model from the file
-                    model = joblib.load(model_file_path)
-
-                    # Now you can use the loaded model to make predictions and obtain prediction probabilities
-                    predictions = model.predict(test_ratios)
-                    prediction_probabilities = model.predict_proba(test_ratios)
-
-                    # Mapping dictionary for transforming predicted scenarios
-                    prediction_labels = {
-                        'pancreatic_circadian': 'Pancreatic Cancer and Disrupted Circadian Rhythm',
-                        'no_pancreatic_circadian': 'No Pancreatic Cancer, but Disrupted Circadian Rhythm',
-                        'no_pancreatic_no_circadian': 'No Pancreatic Cancer and Regular Circadian Rhythm',
-                        'pancreatic_no_circadian': 'Pancreatic Cancer but Regular Circadian Rhythm'
-                    }
-
-                    # Transform predicted scenarios
-                    transformed_predictions = [prediction_labels[prediction] for prediction in predictions]
-
-                    # Print the transformed predicted scenario and prediction probabilities for the file
-                    st.write("Predicted Scenario:")
-                    for transformed_prediction in transformed_predictions:
-                        st.write(transformed_prediction)
-
-                    # Show the prediction probabilities
-                    st.write("Prediction Probabilities:")
-                    for i, class_name in enumerate(model.classes_):
-                        transformed_class_name = prediction_labels[class_name]
-                        st.write(f"{transformed_class_name}: {prediction_probabilities[0][i]}")
-                else:
-                    st.error(f"Model file '{model_file_path}' not found.")
-            else:
-                st.error("No model file selected.")
-
-    # Display selected option
-    st.write(f"You selected: {selected_option}")
+            # Load and predict the model if a model is selected
+            if selected_option:
+                load_and_predict_model(test_ratios, selected_option)
 
 if __name__ == "__main__":
     main()
