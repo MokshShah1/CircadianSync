@@ -23,6 +23,7 @@ css_styles = """
         border-radius: 10px;
         padding: 20px;
         margin-right: 20px; /* Add margin to the right */
+        color: white; /* Set text color to white */
     }
 
     .sidebar-content {
@@ -30,11 +31,13 @@ css_styles = """
         background-color: #333333; /* Darker background color for sidebar content */
         border-radius: 10px;
         padding: 20px;
+        color: white; /* Set text color to white */
     }
 
     .centered-title {
         text-align: center;
         margin-bottom: 20px; /* Add margin at the bottom of the title */
+        color: #8A2BE2; /* Set text color to purple */
     }
 
     .predicted-scenario {
@@ -46,7 +49,7 @@ css_styles = """
 
     .prediction-probabilities {
         font-style: italic;
-        color: #8A2BE2; /* Set text color to purple */
+        color: white; /* Set text color to white */
     }
 
     /* Button Styling */
