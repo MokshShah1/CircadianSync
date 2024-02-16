@@ -39,11 +39,8 @@ def load_and_predict_model(test_ratios, selected_option):
         st.error(f"Model file '{model_file_path}' not found.")
 
 def main():
-    with open("circsync_css.css", "r") as f:
-        css = f.read()
-    st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+    st.markdown('<style>body {background-color: black; color: white;}</style>', unsafe_allow_html=True)  # Set background color and text color
     
-    st.markdown('<div class="logo-container"><img class="logo" src="logo-modified.png"></div>', unsafe_allow_html=True)
     st.markdown('<h1 class="centered-title">Circadian Sync</h1>', unsafe_allow_html=True)
 
     st.markdown('<div class="main-content">CircadianSync is a Machine Learning model that intakes the gene expression levels of patients in order to analyze and predict whether they have pancreatic adenocarcinoma, circadian dysfunction, neither, or both.</div>', unsafe_allow_html=True)
