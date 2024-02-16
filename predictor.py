@@ -27,14 +27,21 @@ def load_and_predict_model(test_ratios, selected_option):
 
         transformed_predictions = [prediction_labels[prediction] for prediction in predictions]
 
-        st.markdown('<div class="predicted-scenario">Predicted Scenario:</div>', unsafe_allow_html=True)
+        # Predicted Scenario Section
+        st.markdown('<div class="predicted-scenario">', unsafe_allow_html=True)
+        st.markdown('<h3>Predicted Scenario:</h3>', unsafe_allow_html=True)
         for transformed_prediction in transformed_predictions:
-            st.markdown(f'<div class="predicted-scenario">{transformed_prediction}</div>', unsafe_allow_html=True)
+            st.markdown(f'<p>{transformed_prediction}</p>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-        st.markdown('<div class="prediction-probabilities">Prediction Probabilities:</div>', unsafe_allow_html=True)
+        # Prediction Probabilities Section
+        st.markdown('<div class="prediction-probabilities">', unsafe_allow_html=True)
+        st.markdown('<h3>Prediction Probabilities:</h3>', unsafe_allow_html=True)
         for i, class_name in enumerate(model.classes_):
             transformed_class_name = prediction_labels[class_name]
-            st.markdown(f'<div class="prediction-probabilities">{transformed_class_name}: {prediction_probabilities[0][i]}</div>', unsafe_allow_html=True)
+            st.markdown(f'<p>{transformed_class_name}: {prediction_probabilities[0][i]}</p>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+
     else:
         st.error(f"Model file '{model_file_path}' not found.")
 
@@ -78,6 +85,16 @@ def main():
                 margin-bottom: 30px; /* Add spacing between text elements */
                 background-color: #f0f0f0; /* Light gray background */
                 border-radius: 5px; /* Rounded corners for text elements */
+            }
+
+            .predicted-scenario h3,
+            .prediction-probabilities h3 {
+                margin-bottom: 10px; /* Add spacing between titles and content */
+            }
+
+            .predicted-scenario p,
+            .prediction-probabilities p {
+                margin: 5px 0; /* Add spacing between lines of text */
             }
 
             .predict-button {
