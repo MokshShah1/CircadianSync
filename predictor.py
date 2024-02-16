@@ -98,7 +98,8 @@ def main():
                 # Show the prediction probabilities
                 st.write("Prediction Probabilities:")
                 for i, class_name in enumerate(model.classes_):
-                    st.write(f"{class_name}: {prediction_probabilities[0][i]}")
+                    transformed_class_name = prediction_labels[class_name]
+                    st.write(f"{transformed_class_name}: {prediction_probabilities[0][i]}")
             else:
                 st.error(f"Model file '{model_file_path}' not found.")
 
