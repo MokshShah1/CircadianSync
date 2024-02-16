@@ -21,8 +21,9 @@ def main():
     uploaded_file = st.sidebar.file_uploader("Upload a file", type=["csv"])
 
     if uploaded_file is not None:
-        # Read the file into a pandas DataFrame
+        # Display the number of rows in the file
         df = pd.read_csv(uploaded_file)
+        st.write(f"Number of rows in the file: {len(df)}")
 
         # Remove the first column
         df.drop(df.columns[0], axis=1, inplace=True)
