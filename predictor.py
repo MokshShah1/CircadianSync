@@ -41,10 +41,10 @@ def load_and_predict_model(test_ratios, selected_option):
             'pancreatic_no_circadian': 'Pancreatic Cancer but Regular Circadian Rhythm'
         }
 
-        st.markdown('<h2 class="centered-title">Predicted Scenario:</h2>', unsafe_allow_html=True)
+        st.markdown('<div class="predicted-scenario">Predicted Scenario:</div>', unsafe_allow_html=True)
         for i, class_name in enumerate(model.classes_):
             transformed_class_name = prediction_labels[class_name]
-            st.write(f"{transformed_class_name}: {prediction_probabilities[0][i]}")
+            st.markdown(f'<div class="predicted-scenario">{transformed_class_name}: {prediction_probabilities[0][i]}</div>', unsafe_allow_html=True)
 
         # Create and display pie chart
         create_pie_chart(prediction_probabilities[0])
