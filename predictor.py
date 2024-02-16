@@ -24,9 +24,7 @@ def main():
     if uploaded_file is not None:
         # Display the number of rows in the file
         df = pd.read_excel(uploaded_file, header=None)
-        #st.write(f"Number of rows in the file: {len(df)}")
         df.to_excel("imported_data.xlsx", index=False)  # Save to Excel file without index
-
         df.to_excel("modified_file.xlsx", index=False)
 
         # Load the test data from a file
@@ -81,8 +79,21 @@ def main():
                 predictions = model.predict(test_ratios)
                 prediction_probabilities = model.predict_proba(test_ratios)
 
-                # Print the predicted scenario and prediction probabilities for the file
-                st.write(f"Predicted Scenario: {predictions}")
+                # Mapping dictionary for transforming predicted scenarios
+                prediction_labels = {
+                    'pancreatic_circadian': 'Pancreatic Cancer and Disrupted Circadian Rhythm',
+                    'no_pancreatic_circadian': 'No Pancreatic Cancer, but Disrupted Circadian Rhythm',
+                    'no_pancreatic_no_circadian': 'No Pancreatic Cancer and Regular Circadian Rhythm',
+                    'pancreatic_no_circadian': 'Pancreatic Cancer but Regular Circadian Rhythm'
+                }
+
+                # Transform predicted scenarios
+                transformed_predictions = [prediction_labels[prediction] for prediction in predictions]
+
+                # Print the transformed predicted scenario and prediction probabilities for the file
+                st.write("Predicted Scenario:")
+                for transformed_prediction in transformed_predictions:
+                    st.write(transformed_prediction)
 
                 # Show the prediction probabilities
                 st.write("Prediction Probabilities:")
