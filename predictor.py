@@ -114,5 +114,9 @@ def load_and_predict_model(test_ratios, selected_option):
                     fig = create_pie_chart(prediction_probabilities[0])
                     st.pyplot(fig)
 
+# Main function
+def main():
+    pass
+
 if __name__ == "__main__":
     main()
