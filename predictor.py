@@ -55,7 +55,7 @@ def load_and_predict_model(test_ratios, selected_option):
 
 # Main function
 def main():
-    st.markdown('<link rel="stylesheet" type="text/css" href="circsync_css.css">', unsafe_allow_html=True) # Link the CSS file
+    st.markdown('<style>body { font-family: Arial, sans-serif; background-color: #121212; color: #ffffff; padding: 20px; } .container { display: flex; flex-direction: column; gap: 20px; } .main-content { flex: 1; background-color: #333333; border-radius: 10px; padding: 20px; margin-right: 20px; } .sidebar-content { width: 300px; background-color: #333333; border-radius: 10px; padding: 20px; } .centered-title { text-align: center; margin-bottom: 20px; } .predicted-scenario { font-weight: bold; color: #8A2BE2; font-size: 24px; margin-bottom: 10px; } .prediction-probabilities { font-style: italic; color: #8A2BE2; } .predict-button { background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; } .predict-button:hover { background-color: #45a049; } #pie-chart-container { width: 400px; margin-top: 20px; margin-left: auto; margin-right: 0; }</style>', unsafe_allow_html=True) # Inline CSS
     
     st.markdown('<h1 class="centered-title">Circadian Sync</h1>', unsafe_allow_html=True)
 
