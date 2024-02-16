@@ -24,7 +24,7 @@ def main():
         # Display the number of rows in the file
         df = pd.read_csv(uploaded_file)
         st.write(f"Number of rows in the file: {len(df)}")
-        df.to_excel("imported_data.xlsx", index=False)  # Save to Excel file without index
+        df.to_csv("imported_data.xlsx", index=False)  # Save to Excel file without index
 
         # Remove the first column
         df.drop(df.columns[0], axis=1, inplace=True)
