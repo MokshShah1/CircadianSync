@@ -1,8 +1,8 @@
-/* circsync_css.css */
-
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
+    background-color: black; /* Set background color to black */
+    color: white; /* Set text color to white */
 }
 
 .centered-title {
@@ -13,34 +13,29 @@ body {
 .main-content {
     margin-top: 20px;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #111; /* Darker background color for main content */
     border-radius: 10px;
 }
 
 .sidebar-content {
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: #111; /* Darker background color for sidebar content */
     border-radius: 10px;
 }
 
 .predicted-scenario {
     font-weight: bold;
     color: #4CAF50;
+    border: 2px solid #4CAF50; /* Add border around predicted scenario */
+    padding: 10px;
+    margin-bottom: 20px;
 }
 
 .prediction-probabilities {
     font-style: italic;
     color: #777;
-}
-
-/* Logo Styling */
-.logo-container {
-    text-align: center;
-}
-
-.logo {
-    width: 200px;
-    height: auto;
+    border: 2px solid #777; /* Add border around prediction probabilities */
+    padding: 10px;
     margin-bottom: 20px;
 }
 
