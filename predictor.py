@@ -42,6 +42,7 @@ def main():
     # CSS styles
     st.markdown("""
         <style>
+            /* Paste the CSS styles here */
             body {
                 font-family: Arial, sans-serif;
                 background-color: #121212;
@@ -56,28 +57,18 @@ def main():
             .main-content {
                 margin-top: 20px;
                 padding: 20px;
-                background-color: #333333;
+                background-color: #1e1e1e;
                 border-radius: 10px;
-                border: 2px solid #555555;
+                border: 2px solid #333333;
             }
             .sidebar-content {
                 padding: 20px;
-                background-color: #333333;
+                background-color: #1e1e1e;
                 border-radius: 10px;
-                border: 2px solid #555555;
+                border: 2px solid #333333;
             }
-            .predicted-scenario {
-                font-weight: bold;
-                color: #4CAF50;
-                border: 2px solid #4CAF50;
-                padding: 15px;
-                margin-bottom: 30px;
-                border-radius: 5px;
-            }
+            .predicted-scenario,
             .prediction-probabilities {
-                font-style: italic;
-                color: #777;
-                border: 2px solid #777;
                 padding: 15px;
                 margin-bottom: 30px;
                 border-radius: 5px;
