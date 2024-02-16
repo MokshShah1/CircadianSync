@@ -1,12 +1,35 @@
+/* circsync_css.css */
 .centered-title {
     text-align: center;
-}
-
-.sidebar .sidebar-content {
-    background-color: purple;
-    width: 200px;
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #333;
 }
 
 .main-content {
-    background-color: #e6e6fa; /* Light shade of purple for the background color of the main content */
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #555;
 }
+
+.sidebar-content {
+    font-size: 16px;
+    color: #666;
+}
+
+.file-upload {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.predicted-scenario {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.prediction-probabilities {
+    margin-top: 10px;
+}
+
