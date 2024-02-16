@@ -1,60 +1,49 @@
+/* circsync_css.css */
+
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f2f6; /* Light gray background */
-    color: #333333; /* Dark text color */
-    padding: 20px;
+    background-color: #121212; /* Set background color to dark gray */
+    color: #ffffff; /* Set text color to white */
 }
 
 .centered-title {
     text-align: center;
-    color: #4CAF50; /* Green title color */
-    margin-bottom: 30px;
 }
 
 .main-content {
     margin-top: 20px;
     padding: 20px;
-    background-color: #ffffff; /* White background for main content */
+    background-color: #333333; /* Darker background color for main content */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a card-like effect */
 }
 
 .sidebar-content {
-    padding: 20px;
-    background-color: #ffffff; /* White background for sidebar content */
+    padding: 10px;
+    background-color: #333333; /* Darker background color for sidebar content */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a card-like effect */
 }
 
-.predicted-scenario,
+.predicted-scenario {
+    font-weight: bold;
+    color: purple; /* Set text color to purple */
+}
+
 .prediction-probabilities {
-    padding: 15px; /* Add padding for text elements */
-    margin-bottom: 30px; /* Add spacing between text elements */
-    background-color: #f0f0f0; /* Light gray background */
-    border-radius: 5px; /* Rounded corners for text elements */
+    font-style: italic;
+    color: purple; /* Set text color to purple */
 }
 
-.predicted-scenario h3,
-.prediction-probabilities h3 {
-    margin-bottom: 10px; /* Add spacing between titles and content */
-}
-
-.predicted-scenario p,
-.prediction-probabilities p {
-    margin: 5px 0; /* Add spacing between lines of text */
-}
-
+/* Button Styling */
 .predict-button {
-    background-color: #4CAF50; /* Green button background */
-    color: white; /* White button text */
+    background-color: #4CAF50;
+    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px; /* Add spacing above the button */
 }
 
 .predict-button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049;
 }
