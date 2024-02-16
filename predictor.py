@@ -4,74 +4,6 @@ import os
 import joblib
 import matplotlib.pyplot as plt
 
-# CSS Styles
-st.markdown('''
-    <style>
-        /* Global Styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212; /* Set background color to dark gray */
-            color: #ffffff; /* Set text color to white */
-        }
-
-        .centered-title {
-            text-align: center;
-        }
-
-        .main-content {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #333333; /* Darker background color for main content */
-            border-radius: 10px;
-            float: left;
-            width: 65%; /* Adjust the width of the main content */
-            margin-right: 5%; /* Add margin to the right of the main content */
-        }
-
-        .sidebar-content {
-            padding: 10px;
-            background-color: #333333; /* Darker background color for sidebar content */
-            border-radius: 10px;
-            float: left;
-            width: 30%; /* Adjust the width of the sidebar */
-        }
-
-        .predicted-scenario {
-            font-weight: bold;
-            color: purple; /* Set text color to purple */
-            font-size: 16px; /* Increase the font size */
-            margin-bottom: 10px; /* Add margin to the bottom */
-        }
-
-        .prediction-probabilities {
-            font-style: italic;
-            color: purple; /* Set text color to purple */
-        }
-
-        /* Button Styling */
-        .predict-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .predict-button:hover {
-            background-color: #45a049;
-        }
-
-        /* Pie Chart Styling */
-        #pie-chart-container {
-            float: left;
-            width: 30%; /* Adjust the width of the pie chart container */
-            margin-top: 20px; /* Add margin to the top of the pie chart container */
-        }
-    </style>
-''', unsafe_allow_html=True)
-
-
 # Function to create pie chart
 def create_pie_chart(prediction_probabilities):
     labels = ['Pancreatic Cancer and Disrupted Circadian Rhythm',
@@ -123,6 +55,8 @@ def load_and_predict_model(test_ratios, selected_option):
 
 # Main function
 def main():
+    st.markdown('<link rel="stylesheet" type="text/css" href="circsync_css.css">', unsafe_allow_html=True) # Link the CSS file
+    
     st.markdown('<h1 class="centered-title">Circadian Sync</h1>', unsafe_allow_html=True)
 
     st.markdown('<div class="main-content">CircadianSync is a Machine Learning model that intakes the gene expression levels of patients in order to analyze and predict whether they have pancreatic adenocarcinoma, circadian dysfunction, neither, or both.</div>', unsafe_allow_html=True)
@@ -159,4 +93,10 @@ def main():
             test_data = preprocess_test_data(test_data)
             test_ratios = calculate_ratios(test_data)
 
-            selected_option = st.sidebar.selectbox("Select a model", ["Random Forest", "Gradient Boosting Classifier",
+            selected_option = st.sidebar.selectbox("Select a model", ["Random Forest", "Gradient Boosting Classifier", "K Neighbors", "Decision Tree Classifier"])
+
+            if selected_option:
+                load_and_predict_model(test_ratios, selected_option)
+
+if __name__ == "__main__":
+    main()
