@@ -9,8 +9,6 @@ body {
 
 .centered-title {
     text-align: center;
-    font-size: 24px; /* Increase title font size */
-    color: #800080; /* Set title color to purple */
 }
 
 .main-content {
@@ -18,24 +16,44 @@ body {
     padding: 20px;
     background-color: #333333; /* Darker background color for main content */
     border-radius: 10px;
+    float: left;
+    width: 70%; /* Adjust the width of the main content */
 }
 
 .sidebar-content {
     padding: 10px;
     background-color: #333333; /* Darker background color for sidebar content */
     border-radius: 10px;
+    float: left;
+    width: 30%; /* Adjust the width of the sidebar */
 }
 
 .predicted-scenario {
     font-weight: bold;
-    color: #ffffff; /* Set text color to white */
-    font-size: 18px; /* Set text font size */
+    color: purple; /* Set text color to purple */
 }
 
-/* Pie chart styling */
-.pie-chart-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+.prediction-probabilities {
+    font-style: italic;
+    color: purple; /* Set text color to purple */
 }
 
+/* Button Styling */
+.predict-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.predict-button:hover {
+    background-color: #45a049;
+}
+
+/* Pie Chart Styling */
+#pie-chart-container {
+    float: right;
+    width: 30%; /* Adjust the width of the pie chart container */
+}
