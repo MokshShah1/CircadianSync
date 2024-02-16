@@ -9,6 +9,8 @@ body {
 
 .centered-title {
     text-align: center;
+    color: #800080; /* Set title color to purple */
+    font-size: 24px; /* Increase title font size */
 }
 
 .main-content {
@@ -26,12 +28,14 @@ body {
 
 .predicted-scenario {
     font-weight: bold;
-    color: purple; /* Set text color to purple */
+    color: #800080; /* Set text color to purple */
+    font-size: 18px; /* Increase text font size */
 }
 
 .prediction-probabilities {
     font-style: italic;
-    color: purple; /* Set text color to purple */
+    color: #800080; /* Set text color to purple */
+    font-size: 18px; /* Increase text font size */
 }
 
 /* Button Styling */
