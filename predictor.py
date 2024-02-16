@@ -96,7 +96,7 @@ def main():
         .centered-title {
             text-align: center;
             margin-bottom: 20px; /* Add margin at the bottom of the title */
-            color: white; /* Set text color to white */
+            color: #ffffff; /* Set text color to white */
         }
 
         .predicted-scenario-container {
