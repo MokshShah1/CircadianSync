@@ -1,42 +1,43 @@
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #121212; /* Dark background color */
-    color: #ffffff; /* Light text color */
-    padding: 20px; /* Add padding for content */
+    background-color: #f0f2f6; /* Light gray background */
+    color: #333333; /* Dark text color */
+    padding: 20px;
 }
 
 .centered-title {
     text-align: center;
     color: #4CAF50; /* Green title color */
-    margin-bottom: 30px; /* Add spacing below the title */
+    margin-bottom: 30px;
 }
 
 .main-content {
     margin-top: 20px;
     padding: 20px;
-    background-color: #1e1e1e; /* Darker background color for main content */
+    background-color: #ffffff; /* White background for main content */
     border-radius: 10px;
-    border: 2px solid #333333; /* Border around main content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a card-like effect */
 }
 
 .sidebar-content {
     padding: 20px;
-    background-color: #1e1e1e; /* Darker background color for sidebar content */
+    background-color: #ffffff; /* White background for sidebar content */
     border-radius: 10px;
-    border: 2px solid #333333; /* Border around sidebar content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a card-like effect */
 }
 
 .predicted-scenario,
 .prediction-probabilities {
     padding: 15px; /* Add padding for text elements */
     margin-bottom: 30px; /* Add spacing between text elements */
+    background-color: #f0f0f0; /* Light gray background */
     border-radius: 5px; /* Rounded corners for text elements */
 }
 
 .predict-button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #4CAF50; /* Green button background */
+    color: white; /* White button text */
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -45,5 +46,5 @@ body {
 }
 
 .predict-button:hover {
-    background-color: #45a049;
+    background-color: #45a049; /* Darker green on hover */
 }
