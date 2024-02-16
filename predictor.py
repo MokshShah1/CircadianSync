@@ -23,7 +23,7 @@ def main():
 
     if uploaded_file is not None:
         # Display the number of rows in the file
-        df = pd.read_excel(uploaded_file)
+        df = pd.read_excel(uploaded_file, header=None))
         st.write(f"Number of rows in the file: {len(df)}")
         df.to_excel("imported_data.xlsx", index=False)  # Save to Excel file without index
 
