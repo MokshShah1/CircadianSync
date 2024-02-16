@@ -35,6 +35,16 @@ body {
     border-radius: 5px; /* Rounded corners for text elements */
 }
 
+.predicted-scenario h3,
+.prediction-probabilities h3 {
+    margin-bottom: 10px; /* Add spacing between titles and content */
+}
+
+.predicted-scenario p,
+.prediction-probabilities p {
+    margin: 5px 0; /* Add spacing between lines of text */
+}
+
 .predict-button {
     background-color: #4CAF50; /* Green button background */
     color: white; /* White button text */
