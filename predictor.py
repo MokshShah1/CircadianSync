@@ -2,7 +2,21 @@ import streamlit as st
 import pandas as pd
 import os
 import joblib
+import matplotlib.pyplot as plt
 
+# Function to create pie chart
+def create_pie_chart(prediction_probabilities):
+    labels = ['Pancreatic Cancer and Disrupted Circadian Rhythm',
+              'No Pancreatic Cancer, but Disrupted Circadian Rhythm',
+              'No Pancreatic Cancer and Regular Circadian Rhythm',
+              'Pancreatic Cancer but Regular Circadian Rhythm']
+    colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
+    fig1, ax1 = plt.subplots()
+    ax1.pie(prediction_probabilities, colors=colors, labels=labels, autopct='%1.1f%%', startangle=140)
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    st.pyplot(fig1)
+
+# Load and predict model function
 def load_and_predict_model(test_ratios, selected_option):
     model_files = {
         "Random Forest": 'random_forest_model_ISEF (2).pkl',
@@ -10,7 +24,7 @@ def load_and_predict_model(test_ratios, selected_option):
         "K Neighbors": 'KNeighborsClassifier_ISEF (2).pkl',
         "Decision Tree Classifier": 'DecisionTreeClassifier_ISEF (2).pkl'
     }
-    
+
     model_file_path = model_files.get(selected_option)
 
     if model_file_path is not None and os.path.exists(model_file_path):
@@ -18,100 +32,20 @@ def load_and_predict_model(test_ratios, selected_option):
         predictions = model.predict(test_ratios)
         prediction_probabilities = model.predict_proba(test_ratios)
 
-        prediction_labels = {
-            'pancreatic_circadian': 'Pancreatic Cancer and Disrupted Circadian Rhythm',
-            'no_pancreatic_circadian': 'No Pancreatic Cancer, but Disrupted Circadian Rhythm',
-            'no_pancreatic_no_circadian': 'No Pancreatic Cancer and Regular Circadian Rhythm',
-            'pancreatic_no_circadian': 'Pancreatic Cancer but Regular Circadian Rhythm'
-        }
-
-        transformed_predictions = [prediction_labels[prediction] for prediction in predictions]
-
-        # Predicted Scenario Section
-        st.markdown('<div class="predicted-scenario">', unsafe_allow_html=True)
-        st.markdown('<h3>Predicted Scenario:</h3>', unsafe_allow_html=True)
-        for transformed_prediction in transformed_predictions:
-            st.markdown(f'<p>{transformed_prediction}</p>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-
-        # Prediction Probabilities Section
-        st.markdown('<div class="prediction-probabilities">', unsafe_allow_html=True)
-        st.markdown('<h3>Prediction Probabilities:</h3>', unsafe_allow_html=True)
+        st.markdown('<div class="predicted-scenario">Predicted Scenario:</div>', unsafe_allow_html=True)
         for i, class_name in enumerate(model.classes_):
             transformed_class_name = prediction_labels[class_name]
-            st.markdown(f'<p>{transformed_class_name}: {prediction_probabilities[0][i]}</p>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+            st.write(f"{transformed_class_name}: {prediction_probabilities[0][i]}")
+
+        # Create and display pie chart
+        create_pie_chart(prediction_probabilities[0])
 
     else:
         st.error(f"Model file '{model_file_path}' not found.")
 
+# Main function
 def main():
-    # CSS styles
-    st.markdown("""
-        <style>
-            /* Paste the CSS styles here */
-            /* Global Styles */
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f0f2f6; /* Light gray background */
-                color: #333333; /* Dark text color */
-                padding: 20px;
-            }
-
-            .centered-title {
-                text-align: center;
-                color: #4CAF50; /* Green title color */
-                margin-bottom: 30px;
-            }
-
-            .main-content {
-                margin-top: 20px;
-                padding: 20px;
-                background-color: #ffffff; /* White background for main content */
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a card-like effect */
-            }
-
-            .sidebar-content {
-                padding: 20px;
-                background-color: #ffffff; /* White background for sidebar content */
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a card-like effect */
-            }
-
-            .predicted-scenario,
-            .prediction-probabilities {
-                padding: 15px; /* Add padding for text elements */
-                margin-bottom: 30px; /* Add spacing between text elements */
-                background-color: #f0f0f0; /* Light gray background */
-                border-radius: 5px; /* Rounded corners for text elements */
-            }
-
-            .predicted-scenario h3,
-            .prediction-probabilities h3 {
-                margin-bottom: 10px; /* Add spacing between titles and content */
-            }
-
-            .predicted-scenario p,
-            .prediction-probabilities p {
-                margin: 5px 0; /* Add spacing between lines of text */
-            }
-
-            .predict-button {
-                background-color: #4CAF50; /* Green button background */
-                color: white; /* White button text */
-                padding: 10px 20px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                margin-top: 20px; /* Add spacing above the button */
-            }
-
-            .predict-button:hover {
-                background-color: #45a049; /* Darker green on hover */
-            }
-        </style>
-    """, unsafe_allow_html=True)
+    st.markdown('<style>body {background-color: #121212; color: #ffffff;}</style>', unsafe_allow_html=True)  # Set background color and text color
 
     st.markdown('<h1 class="centered-title">Circadian Sync</h1>', unsafe_allow_html=True)
 
