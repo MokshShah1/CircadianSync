@@ -82,6 +82,7 @@ def main():
             border-radius: 10px;
             padding: 20px;
             margin-right: 20px; /* Add margin to the right */
+            color: white; /* Set text color to white */
         }
 
         .sidebar-content {
@@ -89,11 +90,13 @@ def main():
             background-color: #333333; /* Darker background color for sidebar content */
             border-radius: 10px;
             padding: 20px;
+            color: white; /* Set text color to white */
         }
 
         .centered-title {
             text-align: center;
             margin-bottom: 20px; /* Add margin at the bottom of the title */
+            color: white; /* Set text color to white */
         }
 
         .predicted-scenario-container {
