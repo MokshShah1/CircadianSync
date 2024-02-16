@@ -43,47 +43,55 @@ def main():
     st.markdown("""
         <style>
             /* Paste the CSS styles here */
+            /* Global Styles */
             body {
                 font-family: Arial, sans-serif;
-                background-color: #121212;
-                color: #ffffff;
+                background-color: #f0f2f6; /* Light gray background */
+                color: #333333; /* Dark text color */
                 padding: 20px;
             }
+
             .centered-title {
                 text-align: center;
-                color: #4CAF50;
+                color: #4CAF50; /* Green title color */
                 margin-bottom: 30px;
             }
+
             .main-content {
                 margin-top: 20px;
                 padding: 20px;
-                background-color: #1e1e1e;
+                background-color: #ffffff; /* White background for main content */
                 border-radius: 10px;
-                border: 2px solid #333333;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a card-like effect */
             }
+
             .sidebar-content {
                 padding: 20px;
-                background-color: #1e1e1e;
+                background-color: #ffffff; /* White background for sidebar content */
                 border-radius: 10px;
-                border: 2px solid #333333;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a card-like effect */
             }
+
             .predicted-scenario,
             .prediction-probabilities {
-                padding: 15px;
-                margin-bottom: 30px;
-                border-radius: 5px;
+                padding: 15px; /* Add padding for text elements */
+                margin-bottom: 30px; /* Add spacing between text elements */
+                background-color: #f0f0f0; /* Light gray background */
+                border-radius: 5px; /* Rounded corners for text elements */
             }
+
             .predict-button {
-                background-color: #4CAF50;
-                color: white;
+                background-color: #4CAF50; /* Green button background */
+                color: white; /* White button text */
                 padding: 10px 20px;
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
-                margin-top: 20px;
+                margin-top: 20px; /* Add spacing above the button */
             }
+
             .predict-button:hover {
-                background-color: #45a049;
+                background-color: #45a049; /* Darker green on hover */
             }
         </style>
     """, unsafe_allow_html=True)
