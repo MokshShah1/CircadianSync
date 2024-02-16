@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #121212; /* Darker background color */
+    background-color: #121212; /* Dark background color */
     color: #ffffff; /* Light text color */
     padding: 20px; /* Add padding for content */
 }
@@ -15,37 +15,25 @@ body {
 .main-content {
     margin-top: 20px;
     padding: 20px;
-    background-color: #333333; /* Darker background color for main content */
+    background-color: #1e1e1e; /* Darker background color for main content */
     border-radius: 10px;
-    border: 2px solid #555555; /* Border around main content */
+    border: 2px solid #333333; /* Border around main content */
 }
 
 .sidebar-content {
     padding: 20px;
-    background-color: #333333; /* Darker background color for sidebar content */
+    background-color: #1e1e1e; /* Darker background color for sidebar content */
     border-radius: 10px;
-    border: 2px solid #555555; /* Border around sidebar content */
+    border: 2px solid #333333; /* Border around sidebar content */
 }
 
-.predicted-scenario {
-    font-weight: bold;
-    color: #4CAF50;
-    border: 2px solid #4CAF50; /* Add border around predicted scenario */
-    padding: 15px;
-    margin-bottom: 30px;
-    border-radius: 5px; /* Rounded corners */
-}
-
+.predicted-scenario,
 .prediction-probabilities {
-    font-style: italic;
-    color: #777;
-    border: 2px solid #777; /* Add border around prediction probabilities */
-    padding: 15px;
-    margin-bottom: 30px;
-    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Add padding for text elements */
+    margin-bottom: 30px; /* Add spacing between text elements */
+    border-radius: 5px; /* Rounded corners for text elements */
 }
 
-/* Button Styling */
 .predict-button {
     background-color: #4CAF50;
     color: white;
