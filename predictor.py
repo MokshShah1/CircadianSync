@@ -1,3 +1,78 @@
+"""
+Global Styles
+"""
+# CSS styles
+css_styles = """
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #121212; /* Set background color to dark gray */
+        color: #ffffff; /* Set text color to white */
+        padding: 20px; /* Add padding to the body */
+    }
+
+    .container {
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column; /* Arrange items vertically */
+        gap: 20px; /* Add gap between child elements */
+    }
+
+    .main-content {
+        flex: 1; /* Take up remaining space */
+        background-color: #333333; /* Darker background color for main content */
+        border-radius: 10px;
+        padding: 20px;
+        margin-right: 20px; /* Add margin to the right */
+    }
+
+    .sidebar-content {
+        width: 300px; /* Set a fixed width for the sidebar */
+        background-color: #333333; /* Darker background color for sidebar content */
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .centered-title {
+        text-align: center;
+        margin-bottom: 20px; /* Add margin at the bottom of the title */
+    }
+
+    .predicted-scenario {
+        font-weight: bold;
+        color: #8A2BE2; /* Set text color to purple */
+        font-size: 24px; /* Increase the font size */
+        margin-bottom: 10px; /* Add margin to the bottom */
+    }
+
+    .prediction-probabilities {
+        font-style: italic;
+        color: #8A2BE2; /* Set text color to purple */
+    }
+
+    /* Button Styling */
+    .predict-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .predict-button:hover {
+        background-color: #45a049;
+    }
+
+    /* Pie Chart Styling */
+    #pie-chart-container {
+        width: 400px; /* Set a fixed width for the pie chart container */
+        margin-top: 20px; /* Add margin to the top of the pie chart container */
+        margin-left: auto; /* Align the pie chart to the right */
+        margin-right: 0; /* Reset margin-right */
+    }
+</style>
+"""
+
 import streamlit as st
 import pandas as pd
 import os
@@ -55,7 +130,8 @@ def load_and_predict_model(test_ratios, selected_option):
 
 # Main function
 def main():
-    st.markdown('<style>body { font-family: Arial, sans-serif; background-color: #121212; color: #ffffff; padding: 20px; } .container { display: flex; flex-direction: column; gap: 20px; } .main-content { flex: 1; background-color: #333333; border-radius: 10px; padding: 20px; margin-right: 20px; } .sidebar-content { width: 300px; background-color: #333333; border-radius: 10px; padding: 20px; } .centered-title { text-align: center; margin-bottom: 20px; } .predicted-scenario { font-weight: bold; color: #8A2BE2; font-size: 24px; margin-bottom: 10px; } .prediction-probabilities { font-style: italic; color: #8A2BE2; } .predict-button { background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; } .predict-button:hover { background-color: #45a049; } #pie-chart-container { width: 400px; margin-top: 20px; margin-left: auto; margin-right: 0; }</style>', unsafe_allow_html=True) # Inline CSS
+    # Apply CSS styles
+    st.markdown(css_styles, unsafe_allow_html=True)
     
     st.markdown('<h1 class="centered-title">Circadian Sync</h1>', unsafe_allow_html=True)
 
