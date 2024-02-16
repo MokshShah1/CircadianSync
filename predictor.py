@@ -15,16 +15,16 @@ def main():
 
     # Add widgets to the sidebar
     st.sidebar.title("CircSync Predictor")
-    st.sidebar.markdown('<div class="sidebar-content">To use CircSync to predict a patient\'s diagnosis, upload a CSV file with their gene expression levels as numerical values in it. Make sure there are two columns: one for gene names labeled GeneID and one for the values labeled ExpressionLevels</div>', unsafe_allow_html=True)
+    st.sidebar.markdown('<div class="sidebar-content">To use CircSync to predict a patient\'s diagnosis, upload an Excel file with their gene expression levels as numerical values in it. Make sure there are two columns: one for gene names labeled GeneID and one for the values labeled ExpressionLevels</div>', unsafe_allow_html=True)
 
-    # Upload the CSV file
-    uploaded_file = st.sidebar.file_uploader("Upload a file", type=["csv"])
+    # Upload the Excel file
+    uploaded_file = st.sidebar.file_uploader("Upload a file", type=["xlsx"])
 
     if uploaded_file is not None:
         # Display the number of rows in the file
-        df = pd.read_csv(uploaded_file)
+        df = pd.read_excel(uploaded_file)
         st.write(f"Number of rows in the file: {len(df)}")
-        df.to_csv("imported_data.xlsx", index=False)  # Save to Excel file without index
+        df.to_excel("imported_data.xlsx", index=False)  # Save to Excel file without index
 
         # Remove the first column
         df.drop(df.columns[0], axis=1, inplace=True)
@@ -34,11 +34,11 @@ def main():
         cols = cols[-1:] + cols[:-1]
         df = df[cols]
     
-        df.to_csv("modified_file.csv", index=False)
+        df.to_excel("modified_file.xlsx", index=False)
 
         # Load the test data from a file
         def load_test_data(file_path):
-            df = pd.read_csv(file_path)  # assuming it's a CSV file
+            df = pd.read_excel(file_path)  # assuming it's an Excel file
             return df
 
         # Preprocess the test data
@@ -64,11 +64,11 @@ def main():
 
             return flattened_ratios.reshape(1, -1)  # Reshape for prediction
 
-        # Provide the folder path containing test files
-        file_path = 'modified_file.csv'
+        # Provide the file path for the modified file
+        file_path = 'modified_file.xlsx'
         
         # Check if the file exists
-        if os.path.exists(file_path) and file_path.endswith('.csv'):
+        if os.path.exists(file_path) and file_path.endswith('.xlsx'):
             # Load and preprocess the test data
             test_data = load_test_data(file_path)
             test_data = preprocess_test_data(test_data)
