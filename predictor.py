@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
 import os
-import pickle
-import sklearn
 import joblib
 
 def main():
@@ -46,8 +44,8 @@ def main():
             # Convert DataFrame values to numeric
             df = df.apply(pd.to_numeric, errors='coerce')  # coerce errors to NaN
 
-            # Remove rows containing NaN values
-            df.dropna(inplace=True)
+            # Fill NaN values with zeros
+            df.fillna(0, inplace=True)
 
             return df
 
@@ -83,11 +81,9 @@ def main():
             # Check if the file exists
             if os.path.exists(model_file_path):
                 # Load the model from the file
-                with open(model_file_path, 'rb') as model_file:
-                    model = joblib.load(model_file)
+                model = joblib.load(model_file_path)
             else:
                 st.error(f"Model file '{model_file_path}' not found.")
-
 
             # Now you can use the loaded model to make predictions
             predictions = model.predict(test_ratios)
