@@ -32,6 +32,13 @@ def load_and_predict_model(test_ratios, selected_option):
         predictions = model.predict(test_ratios)
         prediction_probabilities = model.predict_proba(test_ratios)
 
+        prediction_labels = {
+            'pancreatic_circadian': 'Pancreatic Cancer and Disrupted Circadian Rhythm',
+            'no_pancreatic_circadian': 'No Pancreatic Cancer, but Disrupted Circadian Rhythm',
+            'no_pancreatic_no_circadian': 'No Pancreatic Cancer and Regular Circadian Rhythm',
+            'pancreatic_no_circadian': 'Pancreatic Cancer but Regular Circadian Rhythm'
+        }
+
         st.markdown('<div class="predicted-scenario" style="color: purple;">Predicted Scenario:</div>', unsafe_allow_html=True)
         for i, class_name in enumerate(model.classes_):
             transformed_class_name = prediction_labels[class_name]
