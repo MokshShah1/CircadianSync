@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 import joblib
-import openpyxl  # Add this line to import openpyxl
+import openpyxl
 
 def main():
     with open("circsync_css.css", "r") as f:
@@ -16,7 +16,7 @@ def main():
 
     # Add widgets to the sidebar
     st.sidebar.title("CircSync Predictor")
-    st.sidebar.markdown('<div class="sidebar-content">To use CircSync to predict a patient\'s diagnosis, upload an Excel file with their gene expression levels as numerical values in it. Make sure there are two columns: one for gene names labeled GeneID and one for the values labeled ExpressionLevels</div>', unsafe_allow_html=True)
+    st.sidebar.markdown('<div class="sidebar-content">To use CircSync to predict a patient\'s diagnosis, upload an Excel file with their gene expression levels as numerical values in it. Make sure there is one column for gene expression levels.</div>', unsafe_allow_html=True)
 
     # Upload the Excel file
     uploaded_file = st.sidebar.file_uploader("Upload a file", type=["xlsx"])
@@ -26,16 +26,6 @@ def main():
         df = pd.read_excel(uploaded_file)
         st.write(f"Number of rows in the file: {len(df)}")
         df.to_excel("imported_data.xlsx", index=False)  # Save to Excel file without index
-
-        # Remove the first column
-        df.drop(df.columns[0], axis=1, inplace=True)
-    
-        # Move the second column to the first position
-        cols = df.columns.tolist()
-        cols = cols[-1:] + cols[:-1]
-        df = df[cols]
-    
-        df.to_excel("modified_file.xlsx", index=False)
 
         # Load the test data from a file
         def load_test_data(file_path):
@@ -66,7 +56,7 @@ def main():
             return flattened_ratios.reshape(1, -1)  # Reshape for prediction
 
         # Provide the file path for the modified file
-        file_path = 'modified_file.xlsx'
+        file_path = uploaded_file.name  # Use the original file name
         
         # Check if the file exists
         if os.path.exists(file_path) and file_path.endswith('.xlsx'):
