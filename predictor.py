@@ -29,17 +29,17 @@ def load_and_predict_model(test_ratios, selected_option):
 
         st.markdown('<div class="predicted-scenario">Predicted Scenario:</div>', unsafe_allow_html=True)
         for transformed_prediction in transformed_predictions:
-            st.write(transformed_prediction)
+            st.markdown(f'<div class="predicted-scenario">{transformed_prediction}</div>', unsafe_allow_html=True)
 
         st.markdown('<div class="prediction-probabilities">Prediction Probabilities:</div>', unsafe_allow_html=True)
         for i, class_name in enumerate(model.classes_):
             transformed_class_name = prediction_labels[class_name]
-            st.write(f"{transformed_class_name}: {prediction_probabilities[0][i]}")
+            st.markdown(f'<div class="prediction-probabilities">{transformed_class_name}: {prediction_probabilities[0][i]}</div>', unsafe_allow_html=True)
     else:
         st.error(f"Model file '{model_file_path}' not found.")
 
 def main():
-    st.markdown('<style>body {background-color: black; color: white;}</style>', unsafe_allow_html=True)  # Set background color and text color
+    st.markdown('<style>body {background-color: #121212; color: #ffffff;}</style>', unsafe_allow_html=True)  # Set background color and text color
     
     st.markdown('<h1 class="centered-title">Circadian Sync</h1>', unsafe_allow_html=True)
 
