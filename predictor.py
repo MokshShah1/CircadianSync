@@ -1,81 +1,4 @@
-"""
-Global Styles
-"""
-# CSS styles
-css_styles = """
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #121212; /* Set background color to dark gray */
-        color: #ffffff; /* Set text color to white */
-        padding: 20px; /* Add padding to the body */
-    }
-
-    .container {
-        display: flex; /* Use flexbox for layout */
-        flex-direction: column; /* Arrange items vertically */
-        gap: 20px; /* Add gap between child elements */
-    }
-
-    .main-content {
-        flex: 1; /* Take up remaining space */
-        background-color: #333333; /* Darker background color for main content */
-        border-radius: 10px;
-        padding: 20px;
-        margin-right: 20px; /* Add margin to the right */
-        color: white; /* Set text color to white */
-    }
-
-    .sidebar-content {
-        width: 300px; /* Set a fixed width for the sidebar */
-        background-color: #333333; /* Darker background color for sidebar content */
-        border-radius: 10px;
-        padding: 20px;
-        color: white; /* Set text color to white */
-    }
-
-    .centered-title {
-        text-align: center;
-        margin-bottom: 20px; /* Add margin at the bottom of the title */
-        color: #8A2BE2; /* Set text color to purple */
-    }
-
-    .predicted-scenario {
-        font-weight: bold;
-        color: #8A2BE2; /* Set text color to purple */
-        font-size: 24px; /* Increase the font size */
-        margin-bottom: 10px; /* Add margin to the bottom */
-    }
-
-    .prediction-probabilities {
-        font-style: italic;
-        color: white; /* Set text color to white */
-    }
-
-    /* Button Styling */
-    .predict-button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .predict-button:hover {
-        background-color: #45a049;
-    }
-
-    /* Pie Chart Styling */
-    #pie-chart-container {
-        width: 400px; /* Set a fixed width for the pie chart container */
-        margin-top: 20px; /* Add margin to the top of the pie chart container */
-        margin-left: auto; /* Align the pie chart to the right */
-        margin-right: 0; /* Reset margin-right */
-    }
-</style>
-"""
-
+# Updated Python code
 import streamlit as st
 import pandas as pd
 import os
@@ -119,10 +42,15 @@ def load_and_predict_model(test_ratios, selected_option):
             'pancreatic_no_circadian': 'Pancreatic Cancer but Regular Circadian Rhythm'
         }
 
+        # Create a container for the predicted scenario
+        st.markdown('<div class="predicted-scenario-container">', unsafe_allow_html=True)
+
         st.markdown('<div class="predicted-scenario">Predicted Scenario:</div>', unsafe_allow_html=True)
         for i, class_name in enumerate(model.classes_):
             transformed_class_name = prediction_labels[class_name]
             st.markdown(f'<div class="predicted-scenario">{transformed_class_name}: {prediction_probabilities[0][i]}</div>', unsafe_allow_html=True)
+
+        st.markdown('</div>', unsafe_allow_html=True)  # Close the container
 
         # Create and display pie chart
         fig = create_pie_chart(prediction_probabilities[0])
