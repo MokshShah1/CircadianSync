@@ -59,6 +59,8 @@ def main():
     
     st.markdown('<h1 class="centered-title">Circadian Sync</h1>', unsafe_allow_html=True)
 
+    st.markdown('<div class="container">', unsafe_allow_html=True)
+
     st.markdown('<div class="main-content">CircadianSync is a Machine Learning model that intakes the gene expression levels of patients in order to analyze and predict whether they have pancreatic adenocarcinoma, circadian dysfunction, neither, or both.</div>', unsafe_allow_html=True)
 
     st.sidebar.title("CircSync Predictor")
