@@ -9,8 +9,8 @@ body {
 
 .centered-title {
     text-align: center;
-    color: #800080; /* Set title color to purple */
     font-size: 24px; /* Increase title font size */
+    color: #800080; /* Set title color to purple */
 }
 
 .main-content {
@@ -28,26 +28,14 @@ body {
 
 .predicted-scenario {
     font-weight: bold;
-    color: #800080; /* Set text color to purple */
-    font-size: 18px; /* Increase text font size */
+    color: #ffffff; /* Set text color to white */
+    font-size: 18px; /* Set text font size */
 }
 
-.prediction-probabilities {
-    font-style: italic;
-    color: #800080; /* Set text color to purple */
-    font-size: 18px; /* Increase text font size */
+/* Pie chart styling */
+.pie-chart-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-/* Button Styling */
-.predict-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.predict-button:hover {
-    background-color: #45a049;
-}
