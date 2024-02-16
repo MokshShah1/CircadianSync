@@ -39,8 +39,64 @@ def load_and_predict_model(test_ratios, selected_option):
         st.error(f"Model file '{model_file_path}' not found.")
 
 def main():
-    st.markdown('<style>body {background-color: #121212; color: #ffffff;}</style>', unsafe_allow_html=True)  # Set background color and text color
-    
+    # CSS styles
+    st.markdown("""
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #121212;
+                color: #ffffff;
+                padding: 20px;
+            }
+            .centered-title {
+                text-align: center;
+                color: #4CAF50;
+                margin-bottom: 30px;
+            }
+            .main-content {
+                margin-top: 20px;
+                padding: 20px;
+                background-color: #333333;
+                border-radius: 10px;
+                border: 2px solid #555555;
+            }
+            .sidebar-content {
+                padding: 20px;
+                background-color: #333333;
+                border-radius: 10px;
+                border: 2px solid #555555;
+            }
+            .predicted-scenario {
+                font-weight: bold;
+                color: #4CAF50;
+                border: 2px solid #4CAF50;
+                padding: 15px;
+                margin-bottom: 30px;
+                border-radius: 5px;
+            }
+            .prediction-probabilities {
+                font-style: italic;
+                color: #777;
+                border: 2px solid #777;
+                padding: 15px;
+                margin-bottom: 30px;
+                border-radius: 5px;
+            }
+            .predict-button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 20px;
+            }
+            .predict-button:hover {
+                background-color: #45a049;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
     st.markdown('<h1 class="centered-title">Circadian Sync</h1>', unsafe_allow_html=True)
 
     st.markdown('<div class="main-content">CircadianSync is a Machine Learning model that intakes the gene expression levels of patients in order to analyze and predict whether they have pancreatic adenocarcinoma, circadian dysfunction, neither, or both.</div>', unsafe_allow_html=True)
