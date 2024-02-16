@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 import joblib
+import openpyxl  # Add this line to import openpyxl
 
 def main():
     with open("circsync_css.css", "r") as f:
