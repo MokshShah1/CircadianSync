@@ -16,7 +16,7 @@ def create_pie_chart(prediction_probabilities):
     filtered_labels = [labels[i] for i, p in enumerate(prediction_probabilities) if p != 0]
     ax1.pie(filtered_probabilities, colors=colors, labels=filtered_labels, autopct='%1.1f%%', startangle=140)
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-    st.pyplot(fig1)
+    return fig1
 
 # Load and predict model function
 def load_and_predict_model(test_ratios, selected_option):
@@ -47,7 +47,8 @@ def load_and_predict_model(test_ratios, selected_option):
             st.markdown(f'<div class="predicted-scenario">{transformed_class_name}: {prediction_probabilities[0][i]}</div>', unsafe_allow_html=True)
 
         # Create and display pie chart
-        create_pie_chart(prediction_probabilities[0])
+        fig = create_pie_chart(prediction_probabilities[0])
+        st.pyplot(fig)
 
     else:
         st.error(f"Model file '{model_file_path}' not found.")
