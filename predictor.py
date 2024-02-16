@@ -98,7 +98,7 @@ def main():
 
         .predicted-scenario-container {
             margin-top: 20px; /* Add margin to the top */
-            color: black; /* Set text color to black */
+            color: white; /* Set text color to white */
         }
 
         .predicted-scenario {
