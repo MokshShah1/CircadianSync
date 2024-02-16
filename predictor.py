@@ -10,7 +10,7 @@ def create_pie_chart(prediction_probabilities):
               'No Pancreatic Cancer, but Disrupted Circadian Rhythm',
               'No Pancreatic Cancer and Regular Circadian Rhythm',
               'Pancreatic Cancer but Regular Circadian Rhythm']
-    colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99']
+    colors = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99']
     fig1, ax1 = plt.subplots()
     ax1.pie(prediction_probabilities, colors=colors, labels=labels, autopct='%1.1f%%', startangle=140)
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
@@ -32,7 +32,7 @@ def load_and_predict_model(test_ratios, selected_option):
         predictions = model.predict(test_ratios)
         prediction_probabilities = model.predict_proba(test_ratios)
 
-        st.markdown('<div class="predicted-scenario">Predicted Scenario:</div>', unsafe_allow_html=True)
+        st.markdown('<div class="predicted-scenario" style="color: purple;">Predicted Scenario:</div>', unsafe_allow_html=True)
         for i, class_name in enumerate(model.classes_):
             transformed_class_name = prediction_labels[class_name]
             st.write(f"{transformed_class_name}: {prediction_probabilities[0][i]}")
@@ -45,9 +45,9 @@ def load_and_predict_model(test_ratios, selected_option):
 
 # Main function
 def main():
-    st.markdown('<style>body {background-color: #121212; color: #ffffff;}</style>', unsafe_allow_html=True)  # Set background color and text color
-
-    st.markdown('<h1 class="centered-title">Circadian Sync</h1>', unsafe_allow_html=True)
+    st.markdown('<link rel="stylesheet" type="text/css" href="circsync_css.css">', unsafe_allow_html=True) # Link the CSS file
+    
+    st.markdown('<h1 class="centered-title" style="color: purple;">Circadian Sync</h1>', unsafe_allow_html=True)
 
     st.markdown('<div class="main-content">CircadianSync is a Machine Learning model that intakes the gene expression levels of patients in order to analyze and predict whether they have pancreatic adenocarcinoma, circadian dysfunction, neither, or both.</div>', unsafe_allow_html=True)
 
