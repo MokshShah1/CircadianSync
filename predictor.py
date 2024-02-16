@@ -27,8 +27,6 @@ def main():
         st.write(f"Number of rows in the file: {len(df)}")
         df.to_excel("imported_data.xlsx", index=False)  # Save to Excel file without index
 
-       
-    
         df.to_excel("modified_file.xlsx", index=False)
 
         # Load the test data from a file
@@ -61,7 +59,7 @@ def main():
 
         # Provide the file path for the modified file
         file_path = 'modified_file.xlsx'
-        
+
         # Check if the file exists
         if os.path.exists(file_path) and file_path.endswith('.xlsx'):
             # Load and preprocess the test data
@@ -71,22 +69,27 @@ def main():
             # Calculate gene expression ratios for the test data
             test_ratios = calculate_ratios(test_data)
 
-            # Load the model from the file
             # Specify the path to the model file
             model_file_path = 'random_forest_model_ISEF (2).pkl'  # Replace 'path/to/' with the actual path to your model file
 
-            # Check if the file exists
+            # Check if the model file exists
             if os.path.exists(model_file_path):
                 # Load the model from the file
                 model = joblib.load(model_file_path)
+
+                # Now you can use the loaded model to make predictions and obtain prediction probabilities
+                predictions = model.predict(test_ratios)
+                prediction_probabilities = model.predict_proba(test_ratios)
+
+                # Print the predicted scenario and prediction probabilities for the file
+                st.write(f"File: {file_path}, Predicted Scenario: {predictions}")
+
+                # Show the prediction probabilities
+                st.write("Prediction Probabilities:")
+                for i, class_name in enumerate(model.classes_):
+                    st.write(f"{class_name}: {prediction_probabilities[0][i]}")
             else:
                 st.error(f"Model file '{model_file_path}' not found.")
-
-            # Now you can use the loaded model to make predictions
-            predictions = model.predict(test_ratios)
-
-            # Print the predicted scenario for the file
-            st.write(f"File: {file_path}, Predicted Scenario: {predictions}")
 
     # Dropdown menu in the sidebar
     selected_option = st.sidebar.selectbox("Select a model", ["Random Forest", "Gradient Boosting Classifier", "K Neighbors", "Decision Tree Classifier"])
