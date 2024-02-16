@@ -27,13 +27,7 @@ def main():
         st.write(f"Number of rows in the file: {len(df)}")
         df.to_excel("imported_data.xlsx", index=False)  # Save to Excel file without index
 
-        # Remove the first column
-        df.drop(df.columns[0], axis=1, inplace=True)
-    
-        # Move the second column to the first position
-        cols = df.columns.tolist()
-        cols = cols[-1:] + cols[:-1]
-        df = df[cols]
+       
     
         df.to_excel("modified_file.xlsx", index=False)
 
