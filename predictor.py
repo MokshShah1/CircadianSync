@@ -82,7 +82,7 @@ def main():
                 prediction_probabilities = model.predict_proba(test_ratios)
 
                 # Print the predicted scenario and prediction probabilities for the file
-                st.write(f"File: {file_path}, Predicted Scenario: {predictions}")
+                st.write(f"Predicted Scenario: {predictions}")
 
                 # Show the prediction probabilities
                 st.write("Prediction Probabilities:")
