@@ -83,7 +83,7 @@ def main():
             if os.path.exists(model_file_path):
                 # Load the model from the file
                 with open(model_file_path, 'rb') as model_file:
-                    model = pickle.load(model_file)
+                    model = joblib.load(model_file)
             else:
                 st.error(f"Model file '{model_file_path}' not found.")
 
