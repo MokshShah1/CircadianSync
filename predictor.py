@@ -74,6 +74,8 @@ def main():
             display: flex; /* Use flexbox for layout */
             flex-direction: column; /* Arrange items vertically */
             gap: 20px; /* Add gap between child elements */
+            background-color: #333333; /* Set background color to dark gray */
+            color: #ffffff; /* Set text color to white */
         }
 
         .main-content {
