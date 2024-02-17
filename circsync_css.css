@@ -42,7 +42,7 @@
         font-weight: bold;
         font-size: 24px; /* Increase the font size */
         margin-bottom: 10px; /* Add margin to the bottom */
-        color: #8A2BE2; /* Set text color to purple */
+        color: #000000; /* Set text color to purple */
     }
 
     .prediction-probabilities {
