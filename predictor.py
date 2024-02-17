@@ -65,7 +65,7 @@ def main():
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #121212; /* Set background color to dark gray */
+            background-color: #333333; /* Set background color to dark gray */
             color: #ffffff; /* Set text color to white */
             padding: 20px; /* Add padding to the body */
         }
