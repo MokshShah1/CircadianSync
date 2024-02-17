@@ -132,7 +132,7 @@ def main():
 
         /* Pie Chart Styling */
         #pie-chart-container {
-            width: 400px; /* Set a fixed width for the pie chart container */
+            width: 4000px; /* Set a fixed width for the pie chart container */
             margin-top: 20px; /* Add margin to the top of the pie chart container */
             margin-left: auto; /* Align the pie chart to the right */
             margin-right: 0; /* Reset margin-right */
