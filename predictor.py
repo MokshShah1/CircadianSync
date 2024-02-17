@@ -113,7 +113,7 @@ def main():
 
         .prediction-probabilities {
             font-style: italic;
-            color: #8A2BE2; /* Set text color to purple */
+            color: #000000; /* Set text color to purple */
         }
 
         /* Button Styling */
