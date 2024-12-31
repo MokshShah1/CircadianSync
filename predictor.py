@@ -55,6 +55,10 @@ def load_and_predict_model(test_ratios, selected_option):
         "Decision Tree Classifier": 'DecisionTreeClassifier_ISEF (2).pkl'
     }
 
+    if selected_option == "None":
+        st.warning("No model selected. Please choose a model to proceed.")
+        return  # Do nothing if "None" is selected
+
     model_file_path = model_files.get(selected_option)
 
     if os.path.exists(model_file_path):
@@ -97,6 +101,9 @@ def main():
 
     uploaded_file = st.sidebar.file_uploader("Upload a file", type=["xlsx"])
 
+    # Initialize selected_option to None
+    selected_option = None
+
     if uploaded_file:
         df = pd.read_excel(uploaded_file, header=None)
 
@@ -104,8 +111,10 @@ def main():
         df = df.apply(pd.to_numeric, errors='coerce').fillna(0)
         test_ratios = (df.values / df.values.sum()).flatten().reshape(1, -1)
 
-        selected_option = st.sidebar.selectbox("Select a model", ["Random Forest", "Gradient Boosting Classifier", "K Neighbors", "Decision Tree Classifier"])
-        if selected_option:
+        # Ensure the model selection prompt appears if no model is selected
+        selected_option = st.sidebar.selectbox("Select a model", ["None", "Random Forest", "Gradient Boosting Classifier", "K Neighbors", "Decision Tree Classifier"])
+        
+        if selected_option != "None":
             load_and_predict_model(test_ratios, selected_option)
 
 if __name__ == "__main__":
